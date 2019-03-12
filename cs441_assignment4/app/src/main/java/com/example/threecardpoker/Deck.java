@@ -114,4 +114,17 @@ public class Deck {
         deck_of_cards.add(card52);
     }
 
+    public void shuffle()
+    {
+        Collections.shuffle(deck_of_cards);
+    }
+
+    public void deal()
+    {
+        Card top_card = deck_of_cards.remove(0);
+    }
+
+
+
+
 }
