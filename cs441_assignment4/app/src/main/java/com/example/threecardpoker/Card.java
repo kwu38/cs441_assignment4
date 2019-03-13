@@ -3,15 +3,16 @@ package com.example.threecardpoker;
 import static java.lang.Integer.parseInt;
 
 public class Card {
-    public String name;
-    public int value;
+    private String name, suit;
+    private int value;
 
 
     public Card(String name)
     {
-        name = name;
+        this.name = name;
 
         char first_letter = name.charAt(0);
+        char second_letter = name.charAt(1);
         if(first_letter == 'A')
             value = 14;
         if(first_letter == 'K')
@@ -22,12 +23,24 @@ public class Card {
             value = 11;
         else value = parseInt(String.valueOf(first_letter));
 
+        if(second_letter == 'D')
+            suit = "diamond";
+        if(second_letter == 'C')
+            suit = "clubs";
+        if(second_letter == 'H')
+            suit = "hearts";
+        if(second_letter == 'S')
+            suit = "spades";
+
     }
 
     public int getValue()
     {
         return value;
     }
-
+    public String getSuit()
+    {
+        return suit;
+    }
 
 }

@@ -1,6 +1,5 @@
 package com.example.threecardpoker;
 import java.util.*;
-import com.example.threecardpoker.Card;
 
 public class Deck {
 
