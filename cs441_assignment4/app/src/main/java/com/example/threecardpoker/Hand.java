@@ -2,7 +2,8 @@ package com.example.threecardpoker;
 import java.util.*;
 public class Hand {
 
-    public ArrayList<Card> hand = new ArrayList<Card>();
+    private ArrayList<Card> hand = new ArrayList<Card>();
+    private boolean low_kicker, high_kicker;
 
     public void insert_hand(Card c)
     {
@@ -64,13 +65,30 @@ public class Hand {
     {
         boolean ret = false;
         int value = hand.get(0).getValue();
-        if(value == hand.get(1).getValue() && value != hand.get(2).getValue())
+        if(value == hand.get(1).getValue() && value != hand.get(2).getValue()) {
             ret = true;
-        if(value != hand.get(1).getValue() && hand.get(1).getValue() == hand.get(2).getValue())
+            high_kicker = true;
+        }
+        if(value != hand.get(1).getValue() && hand.get(1).getValue() == hand.get(2).getValue()){
             ret = true;
+            low_kicker = true;
+        }
         return ret;
 
     }
+
+    public int getHighCard()
+    {
+        return hand.get(2).getValue();
+    }
+
+    public int getKicker()
+    {
+            if (high_kicker)
+                return hand.get(2).getValue();
+            return hand.get(0).getValue();
+    }
+
 
 
 

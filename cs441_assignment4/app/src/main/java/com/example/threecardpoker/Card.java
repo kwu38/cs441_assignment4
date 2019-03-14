@@ -15,12 +15,14 @@ public class Card implements Comparable<Card>{
         char second_letter = name.charAt(1);
         if(first_letter == 'A')
             value = 14;
-        if(first_letter == 'K')
+        else if(first_letter == 'K')
             value = 13;
-        if(first_letter == 'Q')
+        else if(first_letter == 'Q')
             value = 12;
-        if(first_letter == 'J')
+        else if(first_letter == 'J')
             value = 11;
+        else if(first_letter == 'T')
+            value = 10;
         else value = parseInt(String.valueOf(first_letter));
 
         if(second_letter == 'D')
