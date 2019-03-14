@@ -2,7 +2,7 @@ package com.example.threecardpoker;
 
 import static java.lang.Integer.parseInt;
 
-public class Card {
+public class Card implements Comparable<Card>{
     private String name, suit;
     private int value;
 
@@ -41,6 +41,13 @@ public class Card {
     public String getSuit()
     {
         return suit;
+    }
+
+    @Override
+    public int compareTo(Card c)
+    {
+        int compare_value = c.getValue();
+        return this.value - compare_value;
     }
 
 }

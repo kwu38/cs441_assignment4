@@ -11,7 +11,18 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    public static void main()
+    {
+        Card c1 = new Card("2H");
+        Card c2 = new Card("3H");
+        Card c3 = new Card("4H");
+        Hand hand1 = new Hand();
+        hand1.insert_hand(c1);
+        hand1.insert_hand(c2);
+        hand1.insert_hand(c3);
+        if(hand1.isStraightFlush())
+            System.out.println("Has Straight Flush");
+    }
     android.widget.Button deal_button;
 
     @Override
