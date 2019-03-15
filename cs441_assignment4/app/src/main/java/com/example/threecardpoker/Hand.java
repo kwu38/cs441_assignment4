@@ -4,12 +4,34 @@ public class Hand {
 
     private ArrayList<Card> hand = new ArrayList<Card>();
     private boolean low_kicker, high_kicker;
+    private int rank;
+
+    public int getRank()
+    {
+        return rank;
+    }
 
     public void insert_hand(Card c)
     {
         hand.add(c);
         Collections.sort(hand);
     }
+    public void setRank()
+    {
+        if(this.isStraightFlush())
+            rank = 10;
+        else if(this.hasSet())
+            rank = 9;
+        else if(this.isStraight())
+            rank = 8;
+        else if(this.isFlush())
+            rank = 7;
+        else if(this.hasPair())
+            rank = 6;
+        else
+            rank = 5;
+    }
+
 
     public boolean isFlush()
     {
@@ -69,7 +91,7 @@ public class Hand {
             ret = true;
             high_kicker = true;
         }
-        if(value != hand.get(1).getValue() && hand.get(1).getValue() == hand.get(2).getValue()){
+        else if(value != hand.get(1).getValue() && hand.get(1).getValue() == hand.get(2).getValue()){
             ret = true;
             low_kicker = true;
         }
@@ -82,6 +104,12 @@ public class Hand {
         return hand.get(2).getValue();
     }
 
+    public int getPair()
+    {
+        if(high_kicker)
+            return hand.get(0).getValue();
+        return hand.get(2).getValue();
+    }
     public int getKicker()
     {
             if (high_kicker)
@@ -89,6 +117,12 @@ public class Hand {
             return hand.get(0).getValue();
     }
 
+    public boolean determineWinner(Hand h)
+    {
+        boolean won = false;
+
+        return won;
+    }
 
 
 

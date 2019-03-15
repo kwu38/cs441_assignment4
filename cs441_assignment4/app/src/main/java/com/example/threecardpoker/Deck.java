@@ -39,10 +39,10 @@ public class Deck {
         Card card30 = new Card("9S");
         Card card31 = new Card("9H");
         Card card32 = new Card("9C");
-        Card card33 = new Card("10D");
-        Card card34 = new Card("10S");
-        Card card35 = new Card("10H");
-        Card card36 = new Card("10C");
+        Card card33 = new Card("TD");
+        Card card34 = new Card("TS");
+        Card card35 = new Card("TH");
+        Card card36 = new Card("TC");
         Card card37 = new Card("JD");
         Card card38 = new Card("JS");
         Card card39 = new Card("JH");
@@ -118,9 +118,10 @@ public class Deck {
         Collections.shuffle(deck_of_cards);
     }
 
-    public void deal()
+    public Card deal()
     {
         Card top_card = deck_of_cards.remove(0);
+        return top_card;
     }
 
 
