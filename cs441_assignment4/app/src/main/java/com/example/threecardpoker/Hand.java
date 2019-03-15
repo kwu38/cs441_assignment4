@@ -4,9 +4,8 @@ public class Hand {
 
     private ArrayList<Card> hand = new ArrayList<Card>();
     private boolean low_kicker, high_kicker;
-    private int rank;
-
-    public int getRank()
+    private double rank;
+    public double getRank()
     {
         return rank;
     }
@@ -16,20 +15,31 @@ public class Hand {
         hand.add(c);
         Collections.sort(hand);
     }
+
+    public ArrayList<Card> getHand()
+    {
+        return hand;
+    }
     public void setRank()
     {
-        if(this.isStraightFlush())
-            rank = 10;
-        else if(this.hasSet())
-            rank = 9;
-        else if(this.isStraight())
-            rank = 8;
-        else if(this.isFlush())
-            rank = 7;
-        else if(this.hasPair())
-            rank = 6;
+        if(this.isStraightFlush()) {
+
+            rank = 10.0 + (getHighCard()/100);
+        }
+        else if(this.hasSet()) {
+            rank = 9.0 + (getHighCard()/100);
+        }
+        else if(this.isStraight() && !this.isFlush()) {
+            rank = 8.0 + (getHighCard()/100);
+        }
+        else if(this.isFlush() && !this.isStraight()) {
+            rank = 7.0 + (getHighCard()/100);
+        }
+        else if(this.hasPair()) {
+            rank = 6.0 + (getPair()/100) + (getKicker()/1000);
+        }
         else
-            rank = 5;
+            rank = 5.0 + (getHighCard()/100) + (getSecondCard()/1000) + (getThirdCard()/10000);
     }
 
 
@@ -99,18 +109,23 @@ public class Hand {
 
     }
 
-    public int getHighCard()
+    public double getHighCard()
     {
         return hand.get(2).getValue();
     }
-
-    public int getPair()
+    public double getSecondCard(){
+        return hand.get(1).getValue();
+    }
+    public double getThirdCard(){
+        return hand.get(0).getValue();
+    }
+    public double getPair()
     {
         if(high_kicker)
             return hand.get(0).getValue();
         return hand.get(2).getValue();
     }
-    public int getKicker()
+    public double getKicker()
     {
             if (high_kicker)
                 return hand.get(2).getValue();

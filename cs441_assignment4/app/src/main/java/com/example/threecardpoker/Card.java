@@ -26,7 +26,7 @@ public class Card implements Comparable<Card>{
         else value = parseInt(String.valueOf(first_letter));
 
         if(second_letter == 'D')
-            suit = "diamond";
+            suit = "diamonds";
         if(second_letter == 'C')
             suit = "clubs";
         if(second_letter == 'H')
@@ -44,7 +44,6 @@ public class Card implements Comparable<Card>{
     {
         return suit;
     }
-
     @Override
     public int compareTo(Card c)
     {
